@@ -69,31 +69,49 @@ class MemoryAnalyzer:
         self.notebook.add(self.tab_vss, text="VSS图表")
         self.notebook.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        # 右侧图例区域
+        # 右侧图例区域（修复后的代码）
         legend_panel = ttk.Frame(main_panel, width=220)
         self.legend_frame = ttk.Frame(legend_panel)
-        self.legend_canvas = tk.Canvas(self.legend_frame, bg='white')
+
+        # 创建Canvas和滚动条
+        self.legend_canvas = tk.Canvas(self.legend_frame, bg='white', highlightthickness=0)
         scrollbar = ttk.Scrollbar(self.legend_frame, orient="vertical", command=self.legend_canvas.yview)
+
+        # 创建可滚动框架
         self.scrollable_frame = ttk.Frame(self.legend_canvas)
 
+        # 绑定配置事件
         self.scrollable_frame.bind(
             "<Configure>",
             lambda e: self.legend_canvas.configure(
                 scrollregion=self.legend_canvas.bbox("all")
             )
         )
-        self.legend_canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+
+        # 将可滚动框架嵌入Canvas
+        self.legend_canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw", tags="frame")
+
+        # 配置Canvas滚动
         self.legend_canvas.configure(yscrollcommand=scrollbar.set)
 
-        self.legend_canvas.pack(side="left", fill="both", expand=True)
+        # 绑定鼠标滚轮事件
+        self.legend_canvas.bind("<Enter>", lambda _: self.legend_canvas.bind_all("<MouseWheel>", self._on_mousewheel))
+        self.legend_canvas.bind("<Leave>", lambda _: self.legend_canvas.unbind_all("<MouseWheel>"))
+
+        # 打包组件
         scrollbar.pack(side="right", fill="y")
-        self.legend_frame.pack(fill="both", expand=True)
-        legend_panel.pack(side=tk.RIGHT, fill=tk.BOTH)
+        self.legend_canvas.pack(side="left", fill="both", expand=True)
+        self.legend_frame.pack(fill="both", expand=True, padx=5, pady=5)
+        legend_panel.pack(side=tk.RIGHT, fill=tk.BOTH, expand=False)
 
         main_panel.pack(fill=tk.BOTH, expand=True)
 
         # 绑定事件
         self.tree.bind('<Button-1>', self.on_tree_click)
+
+    def _on_mousewheel(self, event):
+        """处理鼠标滚轮滚动"""
+        self.legend_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
     def setup_plots(self):
         """初始化图表"""
@@ -264,6 +282,12 @@ class MemoryAnalyzer:
                 process_label.pack(side=tk.LEFT)
                 item_frame.pack(anchor=tk.W, pady=2)
 
+        # 强制更新布局并设置滚动区域
+        self.scrollable_frame.update_idletasks()
+        self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
+
+        # 重置Canvas窗口尺寸
+        self.legend_canvas.itemconfig("frame", width=self.legend_canvas.winfo_width())
         # 更新图表格式
         self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=15)
         self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=15)
