@@ -27,6 +27,8 @@ class MemoryAnalyzer:
         self.df = pd.DataFrame()
         self.process_list = []
         self.all_processes = set()
+        self.legend_frame = None
+        self.legend_canvas = None
 
         # 创建界面组件
         self.create_widgets()
@@ -41,20 +43,10 @@ class MemoryAnalyzer:
         toolbar.pack(side=tk.TOP, fill=tk.X)
 
         # 主内容区域
-        self.notebook = ttk.Notebook(self.root)
+        main_panel = ttk.Frame(self.root)
 
-        # 创建三个标签页
-        self.tab_pss = ttk.Frame(self.notebook)
-        self.tab_rss = ttk.Frame(self.notebook)
-        self.tab_vss = ttk.Frame(self.notebook)
-
-        self.notebook.add(self.tab_pss, text="PSS图表")
-        self.notebook.add(self.tab_rss, text="RSS图表")
-        self.notebook.add(self.tab_vss, text="VSS图表")
-        self.notebook.pack(fill=tk.BOTH, expand=True)
-
-        # 进程选择列表
-        self.tree_frame = ttk.Frame(self.root, width=250)
+        # 左侧进程列表
+        self.tree_frame = ttk.Frame(main_panel, width=250)
         self.tree = ttk.Treeview(self.tree_frame, columns=('Visible', 'Process'), show='headings', height=30)
         self.tree.heading('Visible', text='显示')
         self.tree.heading('Process', text='进程名称')
@@ -63,46 +55,68 @@ class MemoryAnalyzer:
 
         vsb = ttk.Scrollbar(self.tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
         self.tree.configure(yscrollcommand=vsb.set)
-
         self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
         self.tree_frame.pack(side=tk.LEFT, fill=tk.BOTH)
+
+        # 中间图表区域
+        self.notebook = ttk.Notebook(main_panel)
+        self.tab_pss = ttk.Frame(self.notebook)
+        self.tab_rss = ttk.Frame(self.notebook)
+        self.tab_vss = ttk.Frame(self.notebook)
+        self.notebook.add(self.tab_pss, text="PSS图表")
+        self.notebook.add(self.tab_rss, text="RSS图表")
+        self.notebook.add(self.tab_vss, text="VSS图表")
+        self.notebook.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # 右侧图例区域
+        legend_panel = ttk.Frame(main_panel, width=220)
+        self.legend_frame = ttk.Frame(legend_panel)
+        self.legend_canvas = tk.Canvas(self.legend_frame, bg='white')
+        scrollbar = ttk.Scrollbar(self.legend_frame, orient="vertical", command=self.legend_canvas.yview)
+        self.scrollable_frame = ttk.Frame(self.legend_canvas)
+
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.legend_canvas.configure(
+                scrollregion=self.legend_canvas.bbox("all")
+            )
+        )
+        self.legend_canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        self.legend_canvas.configure(yscrollcommand=scrollbar.set)
+
+        self.legend_canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+        self.legend_frame.pack(fill="both", expand=True)
+        legend_panel.pack(side=tk.RIGHT, fill=tk.BOTH)
+
+        main_panel.pack(fill=tk.BOTH, expand=True)
 
         # 绑定事件
         self.tree.bind('<Button-1>', self.on_tree_click)
 
     def setup_plots(self):
-        """初始化图表（改进图例位置）"""
-        # 创建三个独立的图表
-        self.fig_pss = Figure(figsize=(10, 6), dpi=100)
+        """初始化图表"""
+        self.fig_pss = Figure(figsize=(8, 6), dpi=100)
         self.ax_pss = self.fig_pss.add_subplot(111)
         self.canvas_pss = FigureCanvasTkAgg(self.fig_pss, master=self.tab_pss)
         self.canvas_pss.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-        self.fig_rss = Figure(figsize=(10, 6), dpi=100)
+        self.fig_rss = Figure(figsize=(8, 6), dpi=100)
         self.ax_rss = self.fig_rss.add_subplot(111)
         self.canvas_rss = FigureCanvasTkAgg(self.fig_rss, master=self.tab_rss)
         self.canvas_rss.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-        self.fig_vss = Figure(figsize=(10, 6), dpi=100)
+        self.fig_vss = Figure(figsize=(8, 6), dpi=100)
         self.ax_vss = self.fig_vss.add_subplot(111)
         self.canvas_vss = FigureCanvasTkAgg(self.fig_vss, master=self.tab_vss)
         self.canvas_vss.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
         # 统一设置图表样式
         for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
-            ax.set_xlabel("时间", fontproperties='SimHei')
-            ax.set_ylabel("内存使用 (MB)", fontproperties='SimHei')
+            ax.set_xlabel("时间")
+            ax.set_ylabel("内存使用 (MB)")
             ax.grid(True)
-            # 设置图例框样式
-            ax.legend(
-                loc='center left',
-                bbox_to_anchor=(1.02, 0.5),  # 精确控制右侧位置
-                prop={'family': 'SimHei', 'size': 10},
-                frameon=False,
-                title='进程列表',
-                title_fontproperties='SimHei'
-            )
 
     def parse_data(self, data):
         """解析内存数据"""
@@ -209,10 +223,12 @@ class MemoryAnalyzer:
             self.update_plot()
 
     def update_plot(self):
-        """更新图表（改进图例生成方式）"""
-        # 清空所有图表
+        """更新图表和滚动图例"""
+        # 清空图表和旧图例
         for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
             ax.clear()
+        for widget in self.scrollable_frame.winfo_children():
+            widget.destroy()
 
         # 获取选中的进程
         selected = [
@@ -221,65 +237,46 @@ class MemoryAnalyzer:
             if self.tree.item(item, 'values')[0] == '✓'
         ]
 
-        # 为每个进程生成唯一颜色
-        colors = plt.cm.tab20(np.linspace(0, 1, len(selected)))
+        # 生成颜色
+        colors = plt.cm.tab20(np.linspace(0, 1, len(selected))) if selected else []
 
-        # 绘制新数据
+        # 绘制图表和生成图例
         for idx, process in enumerate(selected):
             sub_df = self.full_df[self.full_df['process'] == process]
             if not sub_df.empty:
                 times = sub_df['timestamp']
-                # PSS图表
-                self.ax_pss.plot(
-                    times, sub_df['PSS'],
-                    label=process,
-                    color=colors[idx],
-                    marker='o',
-                    linewidth=2
-                )
-                # RSS图表
-                self.ax_rss.plot(
-                    times, sub_df['RSS'],
-                    label=process,
-                    color=colors[idx],
-                    marker='s',
-                    linewidth=2
-                )
-                # VSS图表
-                self.ax_vss.plot(
-                    times, sub_df['VSS'],
-                    label=process,
-                    color=colors[idx],
-                    marker='^',
-                    linewidth=2
-                )
+                color = colors[idx]
 
-        # 设置图表标题（添加字体配置）
-        self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=20)
-        self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=20)
-        self.ax_vss.set_title("VSS 使用趋势", fontproperties='SimHei', pad=20)
+                # 绘制曲线
+                self.ax_pss.plot(times, sub_df['PSS'], color=color, marker='o', linewidth=2)
+                self.ax_rss.plot(times, sub_df['RSS'], color=color, marker='s', linewidth=2)
+                self.ax_vss.plot(times, sub_df['VSS'], color=color, marker='^', linewidth=2)
 
-        # 强制生成图例
-        for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
-            ax.legend(
-                loc='center left',
-                bbox_to_anchor=(1.02, 0.5),
-                prop={'family': 'SimHei', 'size': 10},
-                frameon=False,
-                title='进程列表',
-                title_fontproperties='SimHei'
-            )
+                # 生成图例项
+                item_frame = ttk.Frame(self.scrollable_frame)
+                color_block = tk.Label(item_frame,
+                                       bg=matplotlib.colors.to_hex(color),
+                                       width=4,
+                                       height=1,
+                                       relief='solid')
+                process_label = ttk.Label(item_frame, text=process[:18], width=20)
+                color_block.pack(side=tk.LEFT, padx=5)
+                process_label.pack(side=tk.LEFT)
+                item_frame.pack(anchor=tk.W, pady=2)
+
+        # 更新图表格式
+        self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=15)
+        self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=15)
+        self.ax_vss.set_title("VSS 使用趋势", fontproperties='SimHei', pad=15)
 
         # 调整布局
         for fig in [self.fig_pss, self.fig_rss, self.fig_vss]:
-            fig.subplots_adjust(
-                right=0.78,  # 为右侧图例留出空间
-                top=0.92  # 为标题留出空间
-            )
+            fig.tight_layout(rect=[0.05, 0.05, 0.95, 0.95])
 
         self.canvas_pss.draw()
         self.canvas_rss.draw()
         self.canvas_vss.draw()
+        self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
 
     def export_data(self):
         """导出数据"""
