@@ -9,6 +9,8 @@ matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+# 在文件最顶部的导入区域添加
+import numpy as np
 
 # 配置中文字体（需要系统支持）
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体
@@ -70,7 +72,7 @@ class MemoryAnalyzer:
         self.tree.bind('<Button-1>', self.on_tree_click)
 
     def setup_plots(self):
-        """初始化图表"""
+        """初始化图表（改进图例位置）"""
         # 创建三个独立的图表
         self.fig_pss = Figure(figsize=(10, 6), dpi=100)
         self.ax_pss = self.fig_pss.add_subplot(111)
@@ -89,9 +91,18 @@ class MemoryAnalyzer:
 
         # 统一设置图表样式
         for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
-            ax.set_xlabel("时间")
+            ax.set_xlabel("时间", fontproperties='SimHei')
+            ax.set_ylabel("内存使用 (MB)", fontproperties='SimHei')
             ax.grid(True)
-            ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+            # 设置图例框样式
+            ax.legend(
+                loc='center left',
+                bbox_to_anchor=(1.02, 0.5),  # 精确控制右侧位置
+                prop={'family': 'SimHei', 'size': 10},
+                frameon=False,
+                title='进程列表',
+                title_fontproperties='SimHei'
+            )
 
     def parse_data(self, data):
         """解析内存数据"""
@@ -198,7 +209,7 @@ class MemoryAnalyzer:
             self.update_plot()
 
     def update_plot(self):
-        """更新所有图表"""
+        """更新图表（改进图例生成方式）"""
         # 清空所有图表
         for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
             ax.clear()
@@ -210,29 +221,61 @@ class MemoryAnalyzer:
             if self.tree.item(item, 'values')[0] == '✓'
         ]
 
+        # 为每个进程生成唯一颜色
+        colors = plt.cm.tab20(np.linspace(0, 1, len(selected)))
+
         # 绘制新数据
-        for process in selected:
+        for idx, process in enumerate(selected):
             sub_df = self.full_df[self.full_df['process'] == process]
             if not sub_df.empty:
                 times = sub_df['timestamp']
                 # PSS图表
-                self.ax_pss.plot(times, sub_df['PSS'], label=process, marker='o')
-                self.ax_pss.set_title("PSS 使用趋势")
-                self.ax_pss.set_ylabel("内存使用 (MB)")
-
+                self.ax_pss.plot(
+                    times, sub_df['PSS'],
+                    label=process,
+                    color=colors[idx],
+                    marker='o',
+                    linewidth=2
+                )
                 # RSS图表
-                self.ax_rss.plot(times, sub_df['RSS'], label=process, marker='s')
-                self.ax_rss.set_title("RSS 使用趋势")
-                self.ax_rss.set_ylabel("内存使用 (MB)")
-
+                self.ax_rss.plot(
+                    times, sub_df['RSS'],
+                    label=process,
+                    color=colors[idx],
+                    marker='s',
+                    linewidth=2
+                )
                 # VSS图表
-                self.ax_vss.plot(times, sub_df['VSS'], label=process, marker='^')
-                self.ax_vss.set_title("VSS 使用趋势")
-                self.ax_vss.set_ylabel("内存使用 (MB)")
+                self.ax_vss.plot(
+                    times, sub_df['VSS'],
+                    label=process,
+                    color=colors[idx],
+                    marker='^',
+                    linewidth=2
+                )
 
-        # 更新所有画布
+        # 设置图表标题（添加字体配置）
+        self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=20)
+        self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=20)
+        self.ax_vss.set_title("VSS 使用趋势", fontproperties='SimHei', pad=20)
+
+        # 强制生成图例
+        for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
+            ax.legend(
+                loc='center left',
+                bbox_to_anchor=(1.02, 0.5),
+                prop={'family': 'SimHei', 'size': 10},
+                frameon=False,
+                title='进程列表',
+                title_fontproperties='SimHei'
+            )
+
+        # 调整布局
         for fig in [self.fig_pss, self.fig_rss, self.fig_vss]:
-            fig.tight_layout(rect=[0, 0, 0.85, 1])  # 为图例留出空间
+            fig.subplots_adjust(
+                right=0.78,  # 为右侧图例留出空间
+                top=0.92  # 为标题留出空间
+            )
 
         self.canvas_pss.draw()
         self.canvas_rss.draw()
