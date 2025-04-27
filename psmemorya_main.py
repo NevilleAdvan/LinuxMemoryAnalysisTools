@@ -29,17 +29,30 @@ class MemoryAnalyzer:
         self.all_processes = set()
         self.legend_frame = None
         self.legend_canvas = None
-
+        self.auto_update = tk.BooleanVar(value=True)  # 新增自动更新开关
+        self.update_job = None  # 延迟任务ID
         # 创建界面组件
         self.create_widgets()
         self.setup_plots()
 
     def create_widgets(self):
         """创建界面组件"""
-        # 工具栏
+        # 在工具栏添加控件
         toolbar = ttk.Frame(self.root)
         ttk.Button(toolbar, text="打开文件", command=self.load_file).pack(side=tk.LEFT, padx=2)
         ttk.Button(toolbar, text="导出数据", command=self.export_data).pack(side=tk.LEFT, padx=2)
+
+        # 新增手动更新按钮
+        ttk.Button(toolbar, text="更新图表", command=self.safe_update).pack(side=tk.LEFT, padx=10)
+
+        # 新增自动更新开关
+        ttk.Checkbutton(
+            toolbar,
+            text="自动更新",
+            variable=self.auto_update,
+            command=lambda: messagebox.showinfo("提示", f"自动更新已{'启用' if self.auto_update.get() else '关闭'}")
+        ).pack(side=tk.LEFT)
+
         toolbar.pack(side=tk.TOP, fill=tk.X)
 
         # 主内容区域
@@ -230,7 +243,7 @@ class MemoryAnalyzer:
             self.tree.insert('', 'end', values=('✓', process), tags=('visible',))
 
     def on_tree_click(self, event):
-        """处理复选框点击"""
+        """处理复选框点击（优化响应）"""
         item = self.tree.identify_row(event.y)
         column = self.tree.identify_column(event.x)
 
@@ -238,69 +251,89 @@ class MemoryAnalyzer:
             current = self.tree.item(item, 'values')[0]
             new_value = '✓' if current == '' else ''
             self.tree.set(item, column='Visible', value=new_value)
-            self.update_plot()
 
+            if self.auto_update.get():
+                # 取消之前的延迟任务
+                if self.update_job:
+                    self.root.after_cancel(self.update_job)
+                # 新增500ms延迟更新
+                self.update_job = self.root.after(1000, self.safe_update)
+
+    def safe_update(self):
+        """安全更新方法（防止重复调用）"""
+        if self.update_job:
+            self.root.after_cancel(self.update_job)
+            self.update_job = None
+        self.update_plot()
     def update_plot(self):
         """更新图表和滚动图例"""
-        # 清空图表和旧图例
-        for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
-            ax.clear()
-        for widget in self.scrollable_frame.winfo_children():
-            widget.destroy()
+        # 在开始前禁用界面交互
+        self.root.config(cursor="watch")
+        self.root.update()
+        try:
+            # 清空图表和旧图例
+            for ax in [self.ax_pss, self.ax_rss, self.ax_vss]:
+                ax.clear()
+            for widget in self.scrollable_frame.winfo_children():
+                widget.destroy()
 
-        # 获取选中的进程
-        selected = [
-            self.tree.item(item, 'values')[1]
-            for item in self.tree.get_children()
-            if self.tree.item(item, 'values')[0] == '✓'
-        ]
+            # 获取选中的进程
+            selected = [
+                self.tree.item(item, 'values')[1]
+                for item in self.tree.get_children()
+                if self.tree.item(item, 'values')[0] == '✓'
+            ]
 
-        # 生成颜色
-        colors = plt.cm.tab20(np.linspace(0, 1, len(selected))) if selected else []
+            # 生成颜色
+            colors = plt.cm.tab20(np.linspace(0, 1, len(selected))) if selected else []
 
-        # 绘制图表和生成图例
-        for idx, process in enumerate(selected):
-            sub_df = self.full_df[self.full_df['process'] == process]
-            if not sub_df.empty:
-                times = sub_df['timestamp']
-                color = colors[idx]
+            # 绘制图表和生成图例
+            for idx, process in enumerate(selected):
+                sub_df = self.full_df[self.full_df['process'] == process]
+                if not sub_df.empty:
+                    times = sub_df['timestamp']
+                    color = colors[idx]
 
-                # 绘制曲线
-                self.ax_pss.plot(times, sub_df['PSS'], color=color, marker='o', linewidth=2)
-                self.ax_rss.plot(times, sub_df['RSS'], color=color, marker='s', linewidth=2)
-                self.ax_vss.plot(times, sub_df['VSS'], color=color, marker='^', linewidth=2)
+                    # 绘制曲线
+                    self.ax_pss.plot(times, sub_df['PSS'], color=color, marker='o', linewidth=2)
+                    self.ax_rss.plot(times, sub_df['RSS'], color=color, marker='s', linewidth=2)
+                    self.ax_vss.plot(times, sub_df['VSS'], color=color, marker='^', linewidth=2)
 
-                # 生成图例项
-                item_frame = ttk.Frame(self.scrollable_frame)
-                color_block = tk.Label(item_frame,
-                                       bg=matplotlib.colors.to_hex(color),
-                                       width=4,
-                                       height=1,
-                                       relief='solid')
-                process_label = ttk.Label(item_frame, text=process[:18], width=20)
-                color_block.pack(side=tk.LEFT, padx=5)
-                process_label.pack(side=tk.LEFT)
-                item_frame.pack(anchor=tk.W, pady=2)
+                    # 生成图例项
+                    item_frame = ttk.Frame(self.scrollable_frame)
+                    color_block = tk.Label(item_frame,
+                                           bg=matplotlib.colors.to_hex(color),
+                                           width=4,
+                                           height=1,
+                                           relief='solid')
+                    process_label = ttk.Label(item_frame, text=process[:18], width=20)
+                    color_block.pack(side=tk.LEFT, padx=5)
+                    process_label.pack(side=tk.LEFT)
+                    item_frame.pack(anchor=tk.W, pady=2)
 
-        # 强制更新布局并设置滚动区域
-        self.scrollable_frame.update_idletasks()
-        self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
+            # 强制更新布局并设置滚动区域
+            self.scrollable_frame.update_idletasks()
+            self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
 
-        # 重置Canvas窗口尺寸
-        self.legend_canvas.itemconfig("frame", width=self.legend_canvas.winfo_width())
-        # 更新图表格式
-        self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=15)
-        self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=15)
-        self.ax_vss.set_title("VSS 使用趋势", fontproperties='SimHei', pad=15)
+            # 重置Canvas窗口尺寸
+            self.legend_canvas.itemconfig("frame", width=self.legend_canvas.winfo_width())
+            # 更新图表格式
+            self.ax_pss.set_title("PSS 使用趋势", fontproperties='SimHei', pad=15)
+            self.ax_rss.set_title("RSS 使用趋势", fontproperties='SimHei', pad=15)
+            self.ax_vss.set_title("VSS 使用趋势", fontproperties='SimHei', pad=15)
 
-        # 调整布局
-        for fig in [self.fig_pss, self.fig_rss, self.fig_vss]:
-            fig.tight_layout(rect=[0.05, 0.05, 0.95, 0.95])
+            # 调整布局
+            for fig in [self.fig_pss, self.fig_rss, self.fig_vss]:
+                fig.tight_layout(rect=[0.05, 0.05, 0.95, 0.95])
 
-        self.canvas_pss.draw()
-        self.canvas_rss.draw()
-        self.canvas_vss.draw()
-        self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
+            self.canvas_pss.draw()
+            self.canvas_rss.draw()
+            self.canvas_vss.draw()
+            self.legend_canvas.configure(scrollregion=self.legend_canvas.bbox("all"))
+        finally:
+            # 恢复界面交互
+            self.root.config(cursor="")
+            self.root.update()
 
     def export_data(self):
         """导出数据"""
