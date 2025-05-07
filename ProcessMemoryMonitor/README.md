@@ -2,8 +2,8 @@
 
 ## 工具概述
 ProcessMemoryMonitor 是一个用于Linux系统内存分析的可视化工具，包含两个核心组件：
-- [ProcessMemoryMonitor.sh](file://./ProcessMemoryMonitor.sh)：Shell脚本用于收集系统进程内存数据
-- [ProcessMemoryMonitor.py](file://./ProcessMemoryMonitor.py)：Python程序用于数据可视化展示
+- [ProcessMemoryMonitor.sh](./ProcessMemoryMonitor.sh)：Shell脚本用于收集系统进程内存数据
+- [ProcessMemoryMonitor.py](./ProcessMemoryMonitor.py)：Python程序用于数据可视化展示
 
 ## 功能特点
 1. 支持PSS/RSS/VSS三种内存指标分析
@@ -34,7 +34,7 @@ chmod +x ProcessMemoryMonitor.sh
 该脚本会：
 - 扫描 `/proc` 目录下的所有进程
 - 收集每个进程的PSS/RSS/VSS内存数据
-- 按时间戳生成结构化文本文件 [ProcessMemoryData.txt](file://./TestData/ProcessMemoryData.txt)
+- 按时间戳生成结构化文本文件 [ProcessMemoryData.txt](./TestData/ProcessMemoryData.txt)
 
 ### 2. 数据分析
 运行Python程序加载生成的数据文件：
@@ -44,7 +44,7 @@ python ProcessMemoryMonitor.py
 
 
 操作指南：
-1. 点击"打开文件"按钮加载生成的 [ProcessMemoryData.txt](file://./TestData/ProcessMemoryData.txt)
+1. 点击"打开文件"按钮加载生成的 [ProcessMemoryData.txt](./TestData/ProcessMemoryData.txt)
 2. 左侧进程列表中勾选要分析的进程
 3. 自动在右侧图表区域显示内存使用趋势
 4. 可通过图例区域滚动条查看所有进程的图例信息
@@ -70,7 +70,7 @@ python ProcessMemoryMonitor.py
 - **颜色管理**：为每个进程分配独立颜色，便于对比分析
 
 ## 输出文件格式说明
-生成的 [ProcessMemoryData.txt](file://./TestData/ProcessMemoryData.txt) 文件包含以下内容：
+生成的 [ProcessMemoryData.txt](./TestData/ProcessMemoryData.txt) 文件包含以下内容：
 1. 统计时间戳
 2. 表头定义（PROCESS, PSS(MB), RSS(MB), VSS(MB)）
 3. 各进程的内存使用数据
