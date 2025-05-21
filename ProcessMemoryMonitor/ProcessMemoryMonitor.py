@@ -58,6 +58,12 @@ class MemoryAnalyzer:
         # 主内容区域
         main_panel = ttk.Frame(self.root)
 
+        # 新增全选按钮
+        ttk.Button(toolbar, text="全选", command=self.select_all).pack(side=tk.LEFT, padx=5)
+
+        # 新增全非选按钮
+        ttk.Button(toolbar, text="全非选", command=self.select_none).pack(side=tk.LEFT, padx=5)
+
         # 左侧进程列表
         self.tree_frame = ttk.Frame(main_panel, width=250)
         self.tree = ttk.Treeview(self.tree_frame, columns=('Visible', 'Process'), show='headings', height=30)
@@ -361,6 +367,33 @@ class MemoryAnalyzer:
 
     def run(self):
         self.root.mainloop()
+    
+    
+    def select_all(self):
+        """全选进程"""
+    # 将所有进程的显示状态设置为“✓”
+        for item in self.tree.get_children():
+            self.tree.set(item, column='Visible', value='✓')
+    # 检查自动更新是否开启
+        if self.auto_update.get():
+        # 如果自动更新开启，取消之前的延迟更新任务
+            if self.update_job:
+                self.root.after_cancel(self.update_job)
+        # 设置一个新的延迟更新任务
+            self.update_job = self.root.after(500, self.safe_update)
+
+    def select_none(self):
+        """全非选进程"""
+    # 将所有进程的显示状态设置为空字符串
+        for item in self.tree.get_children():
+            self.tree.set(item, column='Visible', value='')
+    # 检查自动更新是否开启
+        if self.auto_update.get():
+        # 如果自动更新开启，取消之前的延迟更新任务
+            if self.update_job:
+                self.root.after_cancel(self.update_job)
+        # 设置一个新的延迟更新任务
+            self.update_job = self.root.after(500, self.safe_update)
 
 
 if __name__ == "__main__":
