@@ -11,3 +11,9 @@ Linux内存分析工具
 
 - 示例图如下：
 ![界面运行图](./ProcessMemoryMonitor/Data/AppAnalysisiData.png "APPRunStatus")
+
+2、pmap 的数据统计
+- [README.md](./pmap_analyzer/README.md): pmap 的数据统计成表格数据，查看每一个mapping的内存占用
+
+- 示例图如下：
+![pmap运行图](./pmap_analyzer/Data/result.png)
