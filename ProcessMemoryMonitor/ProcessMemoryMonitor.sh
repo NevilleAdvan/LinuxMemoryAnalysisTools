@@ -1,19 +1,37 @@
 #!/bin/bash
 
-# 确保输出目录存在
-output_dir=${1:-$(pwd)}
-para_times=${2:-0}
+# 默认值
+output_dir=$(pwd)  # 默认输出目录为当前工作目录
+para_times=0        # 默认持续运行
+
+# 使用 getopts 解析命令行参数
+while getopts "t:d:" opt; do
+    case $opt in
+        t)
+            para_times=$OPTARG  # 获取 -t 后的值作为运行次数
+            ;;
+        d)
+            output_dir=$OPTARG  # 获取 -d 后的值作为输出目录路径
+            ;;
+        *)
+            echo "用法: $0 [-t 次数] [-d 输出目录]"
+            exit 1
+            ;;
+    esac
+done
+
+# 确保输出目录存在，如果不存在则创建它
+if [ ! -d "$output_dir" ]; then
+    mkdir -p "$output_dir"
+    echo "创建输出目录: $output_dir"
+fi
 
 output_file=${output_dir}"/ProcessMemoryData.txt"
 # 创建临时文件存储数据
 temp_file=$(mktemp)
 
-while [[ $para_times -ne 0 || "$2" == "" ]];do
-  if [ $para_times -ne 0 ]; then
-     ((para_times--))
-     echo "剩余 times: $para_times"
-  fi
-  # 添加时间戳
+collect_memory_data() {
+   # 添加时间戳
   echo "统计时间: $(date '+%Y-%m-%d %H:%M:%S')" >> "$output_file"
   echo "" >> "$output_file"
 
@@ -102,6 +120,29 @@ while [[ $para_times -ne 0 || "$2" == "" ]];do
   rm -f "$temp_file"
 
   echo "统计完成，结果已保存到 $output_file"
+}
 
-  sleep 5  # 每隔5秒检查一次状态
-done
+# 执行内存监控
+if [ $para_times -eq 0 ]; then
+    # 持续运行模式
+    echo "开始持续监控进程内存，按 Ctrl+C 终止..."
+    while true; do
+        collect_memory_data
+        sleep 5  # 每隔5秒检查一次状态
+    done
+else
+    # 指定次数运行模式
+    echo "开始监控进程内存，将运行 $para_times 次..."
+    original_para_times=$para_times
+    while [ $para_times -gt 0 ]; do
+        echo "第 $((original_para_times - para_times + 1)) 次运行 (共 $original_para_times 次)"
+        collect_memory_data
+        ((para_times--))
+
+        # 如果不是最后一次运行，则等待5秒
+        if [ $para_times -gt 0 ]; then
+            sleep 5
+        fi
+    done
+    echo "监控完成，共运行 $original_para_times 次"
+fi
