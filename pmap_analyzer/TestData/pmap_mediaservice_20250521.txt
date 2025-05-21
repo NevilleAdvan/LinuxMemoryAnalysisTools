@@ -1,0 +1,589 @@
+3791: mediaservice 0 0
+Address		  Kbytes     PSS   Dirty    Swap  Mode  Mapping
+0000005569a27000     364     356       0       0  r-xp  /app/bin/mediaservice
+0000005569a91000      16      16      16       0  r--p  /app/bin/mediaservice
+0000005569a95000       4       4       4       0  rw-p  /app/bin/mediaservice
+0000005569a96000       4       4       4       0  rw-p    [ anon ]
+000000556d0be000   53288   45512   45512       0  rw-p  [heap]
+0000007f7d6b2000   65536      48      48       0  rw-s  /memfd:pulseaudio
+0000007f816b2000       4       0       0       0  ---p    [ anon ]
+0000007f816b3000    8192      12      12       0  rw-p    [ anon ]
+0000007f82eb5000      28      28       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstaudioresample.so
+0000007f82ebc000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstaudioresample.so
+0000007f82ecb000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstaudioresample.so
+0000007f82ecc000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstaudioresample.so
+0000007f82ecd000      24      24       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstaudioconvert.so
+0000007f82ed3000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstaudioconvert.so
+0000007f82ee2000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstaudioconvert.so
+0000007f82ee3000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstaudioconvert.so
+0000007f84e5a000       4       0       0       0  ---p    [ anon ]
+0000007f84e5b000    8192      28      28       0  rw-p    [ anon ]
+0000007f85e5c000       4       0       0       0  ---p    [ anon ]
+0000007f85e5d000    8192      28      28       0  rw-p    [ anon ]
+0000007f8665d000       4       0       0       0  ---p    [ anon ]
+0000007f8665e000    8192       8       8       0  rw-p    [ anon ]
+0000007f86e5e000      76      23       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstsubparse.so
+0000007f86e71000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstsubparse.so
+0000007f86e81000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstsubparse.so
+0000007f86e82000       8       8       8       0  rw-p  /usr/lib/gstreamer-1.0/libgstsubparse.so
+0000007f86e84000      52      17       0       0  r-xp  /usr/lib/libgstriff-1.0.so.0.1603.0
+0000007f86e91000      60       0       0       0  ---p  /usr/lib/libgstriff-1.0.so.0.1603.0
+0000007f86ea0000       4       4       4       0  r--p  /usr/lib/libgstriff-1.0.so.0.1603.0
+0000007f86ea1000       4       4       4       0  rw-p  /usr/lib/libgstriff-1.0.so.0.1603.0
+0000007f86ea2000      56      18       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstwavparse.so
+0000007f86eb0000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstwavparse.so
+0000007f86ec0000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstwavparse.so
+0000007f86ec1000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstwavparse.so
+0000007f86ec2000      64      21       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstflac.so
+0000007f86ed2000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstflac.so
+0000007f86ee2000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstflac.so
+0000007f86ee3000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstflac.so
+0000007f86ee4000     136     136       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstpulseaudio.so
+0000007f86f06000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstpulseaudio.so
+0000007f86f15000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstpulseaudio.so
+0000007f86f16000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstpulseaudio.so
+0000007f86f17000      32      32       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstvolume.so
+0000007f86f1f000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstvolume.so
+0000007f86f2f000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstvolume.so
+0000007f86f30000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstvolume.so
+0000007f86f31000       4       0       0       0  ---p    [ anon ]
+0000007f86f32000    8192      28      28       0  rw-p    [ anon ]
+0000007f87732000      80      21       0       0  r-xp  /usr/lib/libtheoradec.so.1.1.4
+0000007f87746000      60       0       0       0  ---p  /usr/lib/libtheoradec.so.1.1.4
+0000007f87755000       4       4       4       0  r--p  /usr/lib/libtheoradec.so.1.1.4
+0000007f87756000       4       4       4       0  rw-p  /usr/lib/libtheoradec.so.1.1.4
+0000007f87757000     184      21       0       0  r-xp  /usr/lib/libtheoraenc.so.1.1.2
+0000007f87785000      60       0       0       0  ---p  /usr/lib/libtheoraenc.so.1.1.2
+0000007f87794000       4       4       4       0  r--p  /usr/lib/libtheoraenc.so.1.1.2
+0000007f87795000       4       4       4       0  rw-p  /usr/lib/libtheoraenc.so.1.1.2
+0000007f87796000      68      21       0       0  r-xp  /usr/lib/libbz2.so.1.0.8
+0000007f877a7000      60       0       0       0  ---p  /usr/lib/libbz2.so.1.0.8
+0000007f877b6000       4       4       4       0  r--p  /usr/lib/libbz2.so.1.0.8
+0000007f877b7000       4       4       4       0  rw-p  /usr/lib/libbz2.so.1.0.8
+0000007f877b8000      68      21       0       0  r-xp  /lib/libswresample.so.3.5.100
+0000007f877c9000      64       0       0       0  ---p  /lib/libswresample.so.3.5.100
+0000007f877d9000       8       8       8       0  r--p  /lib/libswresample.so.3.5.100
+0000007f877db000       4       4       4       0  rw-p  /lib/libswresample.so.3.5.100
+0000007f877dc000     332      19       0       0  r-xp  /lib/libswscale.so.5.5.100
+0000007f8782f000      60       0       0       0  ---p  /lib/libswscale.so.5.5.100
+0000007f8783e000       8       8       8       0  r--p  /lib/libswscale.so.5.5.100
+0000007f87840000       4       4       4       0  rw-p  /lib/libswscale.so.5.5.100
+0000007f87841000      32       0       0       0  rw-p    [ anon ]
+0000007f87849000     284      99       0       0  r-xp  /lib/libavutil.so.56.31.100
+0000007f87890000      60       0       0       0  ---p  /lib/libavutil.so.56.31.100
+0000007f8789f000      40      40      40       0  r--p  /lib/libavutil.so.56.31.100
+0000007f878a9000       4       4       4       0  rw-p  /lib/libavutil.so.56.31.100
+0000007f878aa000     540       4       4       0  rw-p    [ anon ]
+0000007f87931000    7192    1164       0       0  r-xp  /lib/libavcodec.so.58.54.100
+0000007f88037000      60       0       0       0  ---p  /lib/libavcodec.so.58.54.100
+0000007f88046000     204     204     204       0  r--p  /lib/libavcodec.so.58.54.100
+0000007f88079000     156     156     156       0  rw-p  /lib/libavcodec.so.58.54.100
+0000007f880a0000    7772     276     276       0  rw-p    [ anon ]
+0000007f88837000     840     184       0       0  r-xp  /lib/libavformat.so.58.29.100
+0000007f88909000      60       0       0       0  ---p  /lib/libavformat.so.58.29.100
+0000007f88918000      52      52      52       0  r--p  /lib/libavformat.so.58.29.100
+0000007f88925000      40      40      40       0  rw-p  /lib/libavformat.so.58.29.100
+0000007f8892f000    1752     160       0       0  r-xp  /lib/libavfilter.so.7.57.100
+0000007f88ae5000      60       0       0       0  ---p  /lib/libavfilter.so.7.57.100
+0000007f88af4000     344     344     344       0  r--p  /lib/libavfilter.so.7.57.100
+0000007f88b4a000      44      44      44       0  rw-p  /lib/libavfilter.so.7.57.100
+0000007f88b55000      16       0       0       0  rw-p    [ anon ]
+0000007f88b59000     220      74       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstlibav.so
+0000007f88b90000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstlibav.so
+0000007f88b9f000       8       8       8       0  r--p  /usr/lib/gstreamer-1.0/libgstlibav.so
+0000007f88ba1000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstlibav.so
+0000007f88ba2000       4       0       0       0  ---p    [ anon ]
+0000007f88ba3000    8192      24      24       0  rw-p    [ anon ]
+0000007f893a3000     116      39       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstaudioparsers.so
+0000007f893c0000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstaudioparsers.so
+0000007f893d0000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstaudioparsers.so
+0000007f893d1000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstaudioparsers.so
+0000007f893d2000       4       0       0       0  ---p    [ anon ]
+0000007f893d3000    8192      24      24       0  rw-p    [ anon ]
+0000007f89bd3000      12       3       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstid3demux.so
+0000007f89bd6000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstid3demux.so
+0000007f89be5000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstid3demux.so
+0000007f89be6000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstid3demux.so
+0000007f89be7000      92      30       0       0  r-xp  /usr/lib/gstreamer-1.0/libgsttypefindfunctions.so
+0000007f89bfe000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgsttypefindfunctions.so
+0000007f89c0d000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgsttypefindfunctions.so
+0000007f89c0e000       8       8       8       0  rw-p  /usr/lib/gstreamer-1.0/libgsttypefindfunctions.so
+0000007f8a357000      52      17       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstvorbis.so
+0000007f8a364000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstvorbis.so
+0000007f8a373000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstvorbis.so
+0000007f8a374000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstvorbis.so
+0000007f8a375000     208      69       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstogg.so
+0000007f8a3a9000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstogg.so
+0000007f8a3b9000       8       8       8       0  r--p  /usr/lib/gstreamer-1.0/libgstogg.so
+0000007f8a3bb000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstogg.so
+0000007f8a3cf000       4       0       0       0  ---p    [ anon ]
+0000007f8a3d0000    8192      24      24       0  rw-p    [ anon ]
+0000007f8abd0000      16       5       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstapetag.so
+0000007f8abd4000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstapetag.so
+0000007f8abe3000       4       4       4       0  r--p  /usr/lib/gstreamer-1.0/libgstapetag.so
+0000007f8abe4000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstapetag.so
+0000007f8abe5000     108      35       0       0  r-xp  /usr/lib/gconv/GBK.so
+0000007f8ac00000      64       0       0       0  ---p  /usr/lib/gconv/GBK.so
+0000007f8ac10000       4       4       4       0  r--p  /usr/lib/gconv/GBK.so
+0000007f8ac11000       4       4       4       0  rw-p  /usr/lib/gconv/GBK.so
+0000007f8ac12000     376     125       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstcoreelements.so
+0000007f8ac70000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstcoreelements.so
+0000007f8ac80000       8       8       8       0  r--p  /usr/lib/gstreamer-1.0/libgstcoreelements.so
+0000007f8ac82000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstcoreelements.so
+0000007f8ac83000     560     186       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstplayback.so
+0000007f8ad0f000      64       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstplayback.so
+0000007f8ad1f000       8       8       8       0  r--p  /usr/lib/gstreamer-1.0/libgstplayback.so
+0000007f8ad21000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstplayback.so
+0000007f8ad22000       4       0       0       0  ---p    [ anon ]
+0000007f8ad23000    8192      40      40       0  rw-p    [ anon ]
+0000007f8b523000       4       0       0       0  ---p    [ anon ]
+0000007f8b524000    8192      12      12       0  rw-p    [ anon ]
+0000007f8bd24000       4       0       0       0  ---p    [ anon ]
+0000007f8bd25000    8192      36      36       0  rw-p    [ anon ]
+0000007f8c525000       4       2       0       0  rw-s  /SYSV16333333
+0000007f8c526000       4       0       0       0  ---p    [ anon ]
+0000007f8c527000    8192       8       8       0  rw-p    [ anon ]
+0000007f8cd27000       4       0       0       0  ---p    [ anon ]
+0000007f8cd28000    8192      12      12       0  rw-p    [ anon ]
+0000007f8d528000       4       0       0       0  ---p    [ anon ]
+0000007f8d529000    8192       8       8       0  rw-p    [ anon ]
+0000007f8dd29000       4       0       0       0  rw-s  /SYSV0fe00101
+0000007f8dd2a000       4       0       0       0  ---p    [ anon ]
+0000007f8dd2b000    8192      12      12       0  rw-p    [ anon ]
+0000007f8e52b000       4       0       0       0  rw-s  /SYSV5c0a0005
+0000007f8e52c000      32       3       0       0  r-xp  /lib/libnss_compat-2.31.so
+0000007f8e534000      60       0       0       0  ---p  /lib/libnss_compat-2.31.so
+0000007f8e543000       4       4       4       0  r--p  /lib/libnss_compat-2.31.so
+0000007f8e544000       4       4       4       0  rw-p  /lib/libnss_compat-2.31.so
+0000007f8e545000       4       0       0       0  ---p    [ anon ]
+0000007f8e546000    8192      36      36       0  rw-p    [ anon ]
+0000007f8ed46000       4       0       0       0  ---p    [ anon ]
+0000007f8ed47000    8192       8       8       0  rw-p    [ anon ]
+0000007f8f547000       4       0       0       0  ---p    [ anon ]
+0000007f8f548000    8192      12      12       0  rw-p    [ anon ]
+0000007f8fd48000       4       0       0       0  ---p    [ anon ]
+0000007f8fd49000    8192      16      16       0  rw-p    [ anon ]
+0000007f90549000       4       0       0       0  ---p    [ anon ]
+0000007f9054a000    8192      12      12       0  rw-p    [ anon ]
+0000007f90d4a000       4       0       0       0  ---p    [ anon ]
+0000007f90d4b000    8192      16      16       0  rw-p    [ anon ]
+0000007f9154b000       4       0       0       0  rw-s  /SYSV0fe00112
+0000007f9154c000       4       0       0       0  rw-s  /SYSV0fe00112
+0000007f9154d000      76      68      68       0  rw-p    [ anon ]
+0000007f91560000     184       2       0       0  r-xp  /lib/libudev.so.1.6.16
+0000007f9158e000      60       0       0       0  ---p  /lib/libudev.so.1.6.16
+0000007f9159d000       4       4       4       0  r--p  /lib/libudev.so.1.6.16
+0000007f9159e000       4       4       4       0  rw-p  /lib/libudev.so.1.6.16
+0000007f9159f000       8       0       0       0  r-xp  /usr/lib/libion.so.0.0.0
+0000007f915a1000      60       0       0       0  ---p  /usr/lib/libion.so.0.0.0
+0000007f915b0000       4       4       4       0  r--p  /usr/lib/libion.so.0.0.0
+0000007f915b1000       4       4       4       0  rw-p  /usr/lib/libion.so.0.0.0
+0000007f915b2000       8       8       8       0  rw-p    [ anon ]
+0000007f915b4000       8       0       0       0  r-xp  /usr/lib/libsync.so.0.0.0
+0000007f915b6000      60       0       0       0  ---p  /usr/lib/libsync.so.0.0.0
+0000007f915c5000       4       4       4       0  r--p  /usr/lib/libsync.so.0.0.0
+0000007f915c6000       4       4       4       0  rw-p  /usr/lib/libsync.so.0.0.0
+0000007f915c7000      76       8       0       0  r-xp  /usr/lib/libwayland-server.so.0.1.0
+0000007f915da000      60       0       0       0  ---p  /usr/lib/libwayland-server.so.0.1.0
+0000007f915e9000       8       8       8       0  r--p  /usr/lib/libwayland-server.so.0.1.0
+0000007f915eb000       4       4       4       0  rw-p  /usr/lib/libwayland-server.so.0.1.0
+0000007f915ec000     540     396       0       0  r-xp  /usr/lib/liborc-0.4.so.0.25.0
+0000007f91673000      64       0       0       0  ---p  /usr/lib/liborc-0.4.so.0.25.0
+0000007f91683000       8       8       8       0  r--p  /usr/lib/liborc-0.4.so.0.25.0
+0000007f91685000      16      16      16       0  rw-p  /usr/lib/liborc-0.4.so.0.25.0
+0000007f91689000     148       6       0       0  r-xp  /usr/lib/liblzma.so.5.2.4
+0000007f916ae000      60       0       0       0  ---p  /usr/lib/liblzma.so.5.2.4
+0000007f916bd000       4       4       4       0  r--p  /usr/lib/liblzma.so.5.2.4
+0000007f916be000       4       4       4       0  rw-p  /usr/lib/liblzma.so.5.2.4
+0000007f916bf000       8       8       8       0  rw-p    [ anon ]
+0000007f916c1000     312       3       0       0  r-xp  /lib/libblkid.so.1.1.0
+0000007f9170f000      64       0       0       0  ---p  /lib/libblkid.so.1.1.0
+0000007f9171f000      16      16      16       0  r--p  /lib/libblkid.so.1.1.0
+0000007f91723000       4       4       4       0  rw-p  /lib/libblkid.so.1.1.0
+0000007f91724000    1452       3       0       0  r-xp  /usr/lib/libsamplerate.so.0.1.9
+0000007f9188f000      60       0       0       0  ---p  /usr/lib/libsamplerate.so.0.1.9
+0000007f9189e000       4       4       4       0  r--p  /usr/lib/libsamplerate.so.0.1.9
+0000007f9189f000       4       4       4       0  rw-p  /usr/lib/libsamplerate.so.0.1.9
+0000007f918a0000     976       8       0       0  r-xp  /usr/lib/libasound.so.2.0.0
+0000007f91994000      60       0       0       0  ---p  /usr/lib/libasound.so.2.0.0
+0000007f919a3000      32      32      32       0  r--p  /usr/lib/libasound.so.2.0.0
+0000007f919ab000       4       4       4       0  rw-p  /usr/lib/libasound.so.2.0.0
+0000007f919ac000    2432      28       0       0  r-xp  /usr/lib/libcrypto.so.1.1
+0000007f91c0c000      64       0       0       0  ---p  /usr/lib/libcrypto.so.1.1
+0000007f91c1c000     164     164     164       0  r--p  /usr/lib/libcrypto.so.1.1
+0000007f91c45000       8       8       8       0  rw-p  /usr/lib/libcrypto.so.1.1
+0000007f91c47000      16       4       4       0  rw-p    [ anon ]
+0000007f91c4b000     100       3       0       0  r-xp  /lib/libusb-1.0.so.0.1.0
+0000007f91c64000      64       0       0       0  ---p  /lib/libusb-1.0.so.0.1.0
+0000007f91c74000       4       4       4       0  r--p  /lib/libusb-1.0.so.0.1.0
+0000007f91c75000       4       4       4       0  rw-p  /lib/libusb-1.0.so.0.1.0
+0000007f91c76000       8       8       8       0  rw-p    [ anon ]
+0000007f91c78000     380       3       0       0  r-xp  /app/lib/libjpeg.so.1.0.8
+0000007f91cd7000      64       0       0       0  ---p  /app/lib/libjpeg.so.1.0.8
+0000007f91ce7000       4       4       4       0  r--p  /app/lib/libjpeg.so.1.0.8
+0000007f91ce8000       4       4       4       0  rw-p  /app/lib/libjpeg.so.1.0.8
+0000007f91ce9000     416       3       0       0  r-xp  /app/lib/libtiff.so.3.9.4
+0000007f91d51000      60       0       0       0  ---p  /app/lib/libtiff.so.3.9.4
+0000007f91d60000      12      12      12       0  r--p  /app/lib/libtiff.so.3.9.4
+0000007f91d63000       4       4       4       0  rw-p  /app/lib/libtiff.so.3.9.4
+0000007f91d64000      96       0       0       0  rw-p    [ anon ]
+0000007f91d7c000     208       3       0       0  r-xp  /app/lib/libraw.so.1.8.93
+0000007f91db0000      64       0       0       0  ---p  /app/lib/libraw.so.1.8.93
+0000007f91dc0000      12      12      12       0  r--p  /app/lib/libraw.so.1.8.93
+0000007f91dc3000       4       4       4       0  rw-p  /app/lib/libraw.so.1.8.93
+0000007f91dc4000      16       0       0       0  rw-p    [ anon ]
+0000007f91dc8000     232       3       0       0  r-xp  /app/lib/libpsd.so.1.0.9
+0000007f91e02000      60       0       0       0  ---p  /app/lib/libpsd.so.1.0.9
+0000007f91e11000       4       4       4       0  r--p  /app/lib/libpsd.so.1.0.9
+0000007f91e12000       4       4       4       0  rw-p  /app/lib/libpsd.so.1.0.9
+0000007f91e13000       4       0       0       0  rw-p    [ anon ]
+0000007f91e14000     212       3       0       0  r-xp  /usr/lib/libpng16.so.16.37.0
+0000007f91e49000      60       0       0       0  ---p  /usr/lib/libpng16.so.16.37.0
+0000007f91e58000       4       4       4       0  r--p  /usr/lib/libpng16.so.16.37.0
+0000007f91e59000       4       4       4       0  rw-p  /usr/lib/libpng16.so.16.37.0
+0000007f91e5a000     388       3       0       0  r-xp  /app/lib/libjasper.so.1.900.1
+0000007f91ebb000      60       0       0       0  ---p  /app/lib/libjasper.so.1.900.1
+0000007f91eca000       4       4       4       0  r--p  /app/lib/libjasper.so.1.900.1
+0000007f91ecb000      12      12      12       0  rw-p  /app/lib/libjasper.so.1.900.1
+0000007f91ece000      36       8       8       0  rw-p    [ anon ]
+0000007f91ed7000    1696       7       0       0  r-xp  /usr/lib/libgsl.so
+0000007f9207f000      64       0       0       0  ---p  /usr/lib/libgsl.so
+0000007f9208f000       4       4       4       0  r--p  /usr/lib/libgsl.so
+0000007f92090000       4       4       4       0  rw-p  /usr/lib/libgsl.so
+0000007f92091000       4       0       0       0  rw-p    [ anon ]
+0000007f92092000      72       7       0       0  r-xp  /usr/lib/libadreno_utils.so
+0000007f920a4000      64       0       0       0  ---p  /usr/lib/libadreno_utils.so
+0000007f920b4000       4       4       4       0  r--p  /usr/lib/libadreno_utils.so
+0000007f920b5000       4       4       4       0  rw-p  /usr/lib/libadreno_utils.so
+0000007f920b6000       8       0       0       0  rw-p    [ anon ]
+0000007f920b8000      40       1       0       0  r-xp  /usr/lib/liblog.so.0.0.0
+0000007f920c2000      60       0       0       0  ---p  /usr/lib/liblog.so.0.0.0
+0000007f920d1000       4       4       4       0  r--p  /usr/lib/liblog.so.0.0.0
+0000007f920d2000       4       4       4       0  rw-p  /usr/lib/liblog.so.0.0.0
+0000007f920d3000      60       2       0       0  r-xp  /usr/lib/libcutils.so.0.0.0
+0000007f920e2000      60       0       0       0  ---p  /usr/lib/libcutils.so.0.0.0
+0000007f920f1000       8       8       8       0  r--p  /usr/lib/libcutils.so.0.0.0
+0000007f920f3000       4       4       4       0  rw-p  /usr/lib/libcutils.so.0.0.0
+0000007f920f4000       8       8       8       0  rw-p    [ anon ]
+0000007f920f6000     112       8       0       0  r-xp  /usr/lib/libgbm.so
+0000007f92112000      60       0       0       0  ---p  /usr/lib/libgbm.so
+0000007f92121000       4       4       4       0  r--p  /usr/lib/libgbm.so
+0000007f92122000       4       4       4       0  rw-p  /usr/lib/libgbm.so
+0000007f92123000      12       3       0       0  r-xp  /usr/lib/libgstallocators-1.0.so.0.1603.0
+0000007f92126000      64       0       0       0  ---p  /usr/lib/libgstallocators-1.0.so.0.1603.0
+0000007f92136000       4       4       4       0  r--p  /usr/lib/libgstallocators-1.0.so.0.1603.0
+0000007f92137000       4       4       4       0  rw-p  /usr/lib/libgstallocators-1.0.so.0.1603.0
+0000007f92138000       8       2       0       0  r-xp  /usr/lib/libgstwayland-1.0.so.0.1603.0
+0000007f9213a000      60       0       0       0  ---p  /usr/lib/libgstwayland-1.0.so.0.1603.0
+0000007f92149000       4       4       4       0  r--p  /usr/lib/libgstwayland-1.0.so.0.1603.0
+0000007f9214a000       4       4       4       0  rw-p  /usr/lib/libgstwayland-1.0.so.0.1603.0
+0000007f9214b000      24       1       0       0  r-xp  /lib/libcap.so.2.32
+0000007f92151000      64       0       0       0  ---p  /lib/libcap.so.2.32
+0000007f92161000       4       4       4       0  r--p  /lib/libcap.so.2.32
+0000007f92162000       4       4       4       0  rw-p  /lib/libcap.so.2.32
+0000007f92163000     708      16       0       0  r-xp  /lib/libsystemd.so.0.27.1
+0000007f92214000      60       0       0       0  ---p  /lib/libsystemd.so.0.27.1
+0000007f92223000      16      16      16       0  r--p  /lib/libsystemd.so.0.27.1
+0000007f92227000       4       4       4       0  rw-p  /lib/libsystemd.so.0.27.1
+0000007f92228000      12      12      12       0  rw-p    [ anon ]
+0000007f9222b000     340       7       0       0  r-xp  /usr/lib/libdbus-1.so.3.19.13
+0000007f92280000      64       0       0       0  ---p  /usr/lib/libdbus-1.so.3.19.13
+0000007f92290000       8       8       8       0  r--p  /usr/lib/libdbus-1.so.3.19.13
+0000007f92292000       4       4       4       0  rw-p  /usr/lib/libdbus-1.so.3.19.13
+0000007f92293000      28       3       0       0  r-xp  /usr/lib/libogg.so.0.8.4
+0000007f9229a000      64       0       0       0  ---p  /usr/lib/libogg.so.0.8.4
+0000007f922aa000       4       4       4       0  r--p  /usr/lib/libogg.so.0.8.4
+0000007f922ab000       4       4       4       0  rw-p  /usr/lib/libogg.so.0.8.4
+0000007f922ac000     176      44       0       0  r-xp  /usr/lib/libvorbis.so.0.4.8
+0000007f922d8000      60       0       0       0  ---p  /usr/lib/libvorbis.so.0.4.8
+0000007f922e7000       4       4       4       0  r--p  /usr/lib/libvorbis.so.0.4.8
+0000007f922e8000       4       4       4       0  rw-p  /usr/lib/libvorbis.so.0.4.8
+0000007f922e9000     556      10       0       0  r-xp  /usr/lib/libvorbisenc.so.2.0.11
+0000007f92374000      60       0       0       0  ---p  /usr/lib/libvorbisenc.so.2.0.11
+0000007f92383000      92      92      92       0  r--p  /usr/lib/libvorbisenc.so.2.0.11
+0000007f9239a000       4       4       4       0  rw-p  /usr/lib/libvorbisenc.so.2.0.11
+0000007f9239b000     212      72       0       0  r-xp  /usr/lib/libFLAC.so.8.3.0
+0000007f923d0000      60       0       0       0  ---p  /usr/lib/libFLAC.so.8.3.0
+0000007f923df000       4       4       4       0  r--p  /usr/lib/libFLAC.so.8.3.0
+0000007f923e0000       4       4       4       0  rw-p  /usr/lib/libFLAC.so.8.3.0
+0000007f923e1000     496       8       0       0  r-xp  /usr/lib/libsndfile.so.1.0.28
+0000007f9245d000      60       0       0       0  ---p  /usr/lib/libsndfile.so.1.0.28
+0000007f9246c000      12      12      12       0  r--p  /usr/lib/libsndfile.so.1.0.28
+0000007f9246f000       4       4       4       0  rw-p  /usr/lib/libsndfile.so.1.0.28
+0000007f92470000      16       8       8       0  rw-p    [ anon ]
+0000007f92474000     480      66       0       0  r-xp  /usr/lib/pulseaudio/libpulsecommon-13.0.so
+0000007f924ec000      64       0       0       0  ---p  /usr/lib/pulseaudio/libpulsecommon-13.0.so
+0000007f924fc000       8       8       8       0  r--p  /usr/lib/pulseaudio/libpulsecommon-13.0.so
+0000007f924fe000       4       4       4       0  rw-p  /usr/lib/pulseaudio/libpulsecommon-13.0.so
+0000007f924ff000    1288     284       0       0  r-xp  /usr/lib/libgstreamer-1.0.so.0.1603.0
+0000007f92641000      64       0       0       0  ---p  /usr/lib/libgstreamer-1.0.so.0.1603.0
+0000007f92651000      28      28      28       0  r--p  /usr/lib/libgstreamer-1.0.so.0.1603.0
+0000007f92658000       8       8       8       0  rw-p  /usr/lib/libgstreamer-1.0.so.0.1603.0
+0000007f9265a000       4       4       4       0  rw-p    [ anon ]
+0000007f9265b000     464     160       0       0  r-xp  /usr/lib/libgstbase-1.0.so.0.1603.0
+0000007f926cf000      60       0       0       0  ---p  /usr/lib/libgstbase-1.0.so.0.1603.0
+0000007f926de000       8       8       8       0  r--p  /usr/lib/libgstbase-1.0.so.0.1603.0
+0000007f926e0000       4       4       4       0  rw-p  /usr/lib/libgstbase-1.0.so.0.1603.0
+0000007f926e1000     472     183       0       0  r-xp  /usr/lib/libgstaudio-1.0.so.0.1603.0
+0000007f92757000      64       0       0       0  ---p  /usr/lib/libgstaudio-1.0.so.0.1603.0
+0000007f92767000      16      16      16       0  r--p  /usr/lib/libgstaudio-1.0.so.0.1603.0
+0000007f9276b000       4       4       4       0  rw-p  /usr/lib/libgstaudio-1.0.so.0.1603.0
+0000007f9276c000     688     157       0       0  r-xp  /usr/lib/libgstvideo-1.0.so.0.1603.0
+0000007f92818000      60       0       0       0  ---p  /usr/lib/libgstvideo-1.0.so.0.1603.0
+0000007f92827000      48      48      48       0  r--p  /usr/lib/libgstvideo-1.0.so.0.1603.0
+0000007f92833000       4       4       4       0  rw-p  /usr/lib/libgstvideo-1.0.so.0.1603.0
+0000007f92834000       8       8       8       0  rw-p    [ anon ]
+0000007f92836000      56      56       0       0  r-xp  /app/lib/libunwind.so.8
+0000007f92844000      60       0       0       0  ---p  /app/lib/libunwind.so.8
+0000007f92853000       4       4       4       0  r--p  /app/lib/libunwind.so.8
+0000007f92854000       4       4       4       0  rw-p  /app/lib/libunwind.so.8
+0000007f92855000     132     120     120       0  rw-p    [ anon ]
+0000007f92876000    1384       3       0       0  r-xp  /usr/lib/libsqlite3.so.0.8.6
+0000007f929d0000      60       0       0       0  ---p  /usr/lib/libsqlite3.so.0.8.6
+0000007f929df000      16      16      16       0  r--p  /usr/lib/libsqlite3.so.0.8.6
+0000007f929e3000      12      12      12       0  rw-p  /usr/lib/libsqlite3.so.0.8.6
+0000007f929e6000      32       1       0       0  r-xp  /usr/lib/libffi.so.7.1.0
+0000007f929ee000      60       0       0       0  ---p  /usr/lib/libffi.so.7.1.0
+0000007f929fd000       4       4       4       0  r--p  /usr/lib/libffi.so.7.1.0
+0000007f929fe000       4       4       4       0  rw-p  /usr/lib/libffi.so.7.1.0
+0000007f929ff000      76       8       0       0  r-xp  /lib/libresolv-2.31.so
+0000007f92a12000      64       0       0       0  ---p  /lib/libresolv-2.31.so
+0000007f92a22000       4       4       4       0  r--p  /lib/libresolv-2.31.so
+0000007f92a23000       4       4       4       0  rw-p  /lib/libresolv-2.31.so
+0000007f92a24000       8       4       4       0  rw-p    [ anon ]
+0000007f92a26000     160       5       0       0  r-xp  /lib/libselinux.so.1
+0000007f92a4e000      64       0       0       0  ---p  /lib/libselinux.so.1
+0000007f92a5e000       4       4       4       0  r--p  /lib/libselinux.so.1
+0000007f92a5f000       4       4       4       0  rw-p  /lib/libselinux.so.1
+0000007f92a60000      16      12      12       0  rw-p    [ anon ]
+0000007f92a64000     376       4       0       0  r-xp  /lib/libmount.so.1.1.0
+0000007f92ac2000      64       0       0       0  ---p  /lib/libmount.so.1.1.0
+0000007f92ad2000       8       8       8       0  r--p  /lib/libmount.so.1.1.0
+0000007f92ad4000       4       4       4       0  rw-p  /lib/libmount.so.1.1.0
+0000007f92ad5000      92       2       0       0  r-xp  /lib/libz.so.1.2.11
+0000007f92aec000      64       0       0       0  ---p  /lib/libz.so.1.2.11
+0000007f92afc000       4       4       4       0  r--p  /lib/libz.so.1.2.11
+0000007f92afd000       4       4       4       0  rw-p  /lib/libz.so.1.2.11
+0000007f92afe000     396      64       0       0  r-xp  /lib/libpcre.so.1.2.12
+0000007f92b61000      60       0       0       0  ---p  /lib/libpcre.so.1.2.12
+0000007f92b70000       4       4       4       0  r--p  /lib/libpcre.so.1.2.12
+0000007f92b71000       4       4       4       0  rw-p  /lib/libpcre.so.1.2.12
+0000007f92b72000     368       3       0       0  r-xp  /app/lib/liblinux_hal.so.0.0.1
+0000007f92bce000      60       0       0       0  ---p  /app/lib/liblinux_hal.so.0.0.1
+0000007f92bdd000       8       8       8       0  r--p  /app/lib/liblinux_hal.so.0.0.1
+0000007f92bdf000      36       9       8       0  rw-p  /app/lib/liblinux_hal.so.0.0.1
+0000007f92be8000       8       0       0       0  rw-p    [ anon ]
+0000007f92bea000     380       4       0       0  r-xp  /app/lib/libcximage.so.7.0.0
+0000007f92c49000      60       0       0       0  ---p  /app/lib/libcximage.so.7.0.0
+0000007f92c58000       8       8       8       0  r--p  /app/lib/libcximage.so.7.0.0
+0000007f92c5a000       4       4       4       0  rw-p  /app/lib/libcximage.so.7.0.0
+0000007f92c5b000       8       8       8       0  rw-p    [ anon ]
+0000007f92c5d000      56       3       0       0  r-xp  /app/lib/libipcassistant.so.0.0.1
+0000007f92c6b000      64       0       0       0  ---p  /app/lib/libipcassistant.so.0.0.1
+0000007f92c7b000       4       4       4       0  r--p  /app/lib/libipcassistant.so.0.0.1
+0000007f92c7c000       4       4       4       0  rw-p  /app/lib/libipcassistant.so.0.0.1
+0000007f92c7d000    1412      28       0       0  r-xp  /lib/libc-2.31.so
+0000007f92dde000      64       0       0       0  ---p  /lib/libc-2.31.so
+0000007f92dee000      12      12      12       0  r--p  /lib/libc-2.31.so
+0000007f92df1000      12      12      12       0  rw-p  /lib/libc-2.31.so
+0000007f92df4000      12      12      12       0  rw-p    [ anon ]
+0000007f92df7000      80       0       0       0  r-xp  /lib/libgcc_s.so.1
+0000007f92e0b000      60       0       0       0  ---p  /lib/libgcc_s.so.1
+0000007f92e1a000       4       4       4       0  r--p  /lib/libgcc_s.so.1
+0000007f92e1b000       4       4       4       0  rw-p  /lib/libgcc_s.so.1
+0000007f92e1c000    1952      67       0       0  r-xp  /usr/lib/libstdc++.so.6.0.29
+0000007f93004000      64       0       0       0  ---p  /usr/lib/libstdc++.so.6.0.29
+0000007f93014000      52      52      52       0  r--p  /usr/lib/libstdc++.so.6.0.29
+0000007f93021000       4       4       4       0  rw-p  /usr/lib/libstdc++.so.6.0.29
+0000007f93022000      12      12      12       0  rw-p    [ anon ]
+0000007f93025000       8       1       0       0  r-xp  /usr/lib/libilmCommon.so.2.2.0
+0000007f93027000      60       0       0       0  ---p  /usr/lib/libilmCommon.so.2.2.0
+0000007f93036000       4       4       4       0  r--p  /usr/lib/libilmCommon.so.2.2.0
+0000007f93037000       4       4       4       0  rw-p  /usr/lib/libilmCommon.so.2.2.0
+0000007f93038000       8       8       8       0  rw-p    [ anon ]
+0000007f9303a000      44       6       0       0  r-xp  /usr/lib/libilmControl.so.2.2.0
+0000007f93045000      60       0       0       0  ---p  /usr/lib/libilmControl.so.2.2.0
+0000007f93054000       4       4       4       0  r--p  /usr/lib/libilmControl.so.2.2.0
+0000007f93055000       4       4       4       0  rw-p  /usr/lib/libilmControl.so.2.2.0
+0000007f93056000       8       1       0       0  r-xp  /usr/lib/libilmClient.so.2.2.0
+0000007f93058000      60       0       0       0  ---p  /usr/lib/libilmClient.so.2.2.0
+0000007f93067000       4       4       4       0  r--p  /usr/lib/libilmClient.so.2.2.0
+0000007f93068000       4       4       4       0  rw-p  /usr/lib/libilmClient.so.2.2.0
+0000007f93069000   21568     494       0       0  r-xp  /usr/lib/libGLESv2_adreno.so
+0000007f94579000      60       0       0       0  ---p  /usr/lib/libGLESv2_adreno.so
+0000007f94588000     336     336     336       0  r--p  /usr/lib/libGLESv2_adreno.so
+0000007f945dc000      92      80      80       0  rw-p  /usr/lib/libGLESv2_adreno.so
+0000007f945f3000     292     192     192       0  rw-p    [ anon ]
+0000007f9463c000     120       7       0       0  r-xp  /usr/lib/libEGL_adreno.so
+0000007f9465a000      60       0       0       0  ---p  /usr/lib/libEGL_adreno.so
+0000007f94669000       4       4       4       0  r--p  /usr/lib/libEGL_adreno.so
+0000007f9466a000       4       4       4       0  rw-p  /usr/lib/libEGL_adreno.so
+0000007f9466b000       8       4       4       0  rw-p    [ anon ]
+0000007f9466d000       4       0       0       0  r-xp  /usr/lib/libwayland-egl.so.1.0.0
+0000007f9466e000      60       0       0       0  ---p  /usr/lib/libwayland-egl.so.1.0.0
+0000007f9467d000       4       4       4       0  r--p  /usr/lib/libwayland-egl.so.1.0.0
+0000007f9467e000       4       4       4       0  rw-p  /usr/lib/libwayland-egl.so.1.0.0
+0000007f9467f000      56       6       0       0  r-xp  /usr/lib/libwayland-client.so.0.3.0
+0000007f9468d000      60       0       0       0  ---p  /usr/lib/libwayland-client.so.0.3.0
+0000007f9469c000       8       8       8       0  r--p  /usr/lib/libwayland-client.so.0.3.0
+0000007f9469e000       4       4       4       0  rw-p  /usr/lib/libwayland-client.so.0.3.0
+0000007f9469f000     468      13       0       0  r-xp  /app/lib/libreflectcpp.so.0.17.0
+0000007f94714000      60       0       0       0  ---p  /app/lib/libreflectcpp.so.0.17.0
+0000007f94723000       8       8       8       0  r--p  /app/lib/libreflectcpp.so.0.17.0
+0000007f94725000       4       4       4       0  rw-p  /app/lib/libreflectcpp.so.0.17.0
+0000007f94726000     580      30       0       0  r-xp  /app/lib/libspdlog.so.1.14.1
+0000007f947b7000      64       0       0       0  ---p  /app/lib/libspdlog.so.1.14.1
+0000007f947c7000      16      16      16       0  r--p  /app/lib/libspdlog.so.1.14.1
+0000007f947cb000       4       4       4       0  rw-p  /app/lib/libspdlog.so.1.14.1
+0000007f947cc000     288      13       0       0  r-xp  /app/lib/libcvi-lib-log.so
+0000007f94814000      60       0       0       0  ---p  /app/lib/libcvi-lib-log.so
+0000007f94823000      12      12      12       0  r--p  /app/lib/libcvi-lib-log.so
+0000007f94826000       4       4       4       0  rw-p  /app/lib/libcvi-lib-log.so
+0000007f94827000      36       9       0       0  r-xp  /app/lib/libilmShell.so.1.0.0
+0000007f94830000      60       0       0       0  ---p  /app/lib/libilmShell.so.1.0.0
+0000007f9483f000       4       4       4       0  r--p  /app/lib/libilmShell.so.1.0.0
+0000007f94840000       4       4       4       0  rw-p  /app/lib/libilmShell.so.1.0.0
+0000007f94841000      72      16       0       0  r-xp  /usr/lib/gstreamer-1.0/libgstwaylandsink.so
+0000007f94853000      60       0       0       0  ---p  /usr/lib/gstreamer-1.0/libgstwaylandsink.so
+0000007f94862000       8       8       8       0  r--p  /usr/lib/gstreamer-1.0/libgstwaylandsink.so
+0000007f94864000       4       4       4       0  rw-p  /usr/lib/gstreamer-1.0/libgstwaylandsink.so
+0000007f94865000      44       2       0       0  r-xp  /app/lib/libconfig.so.1.0.0
+0000007f94870000      64       0       0       0  ---p  /app/lib/libconfig.so.1.0.0
+0000007f94880000       4       4       4       0  r--p  /app/lib/libconfig.so.1.0.0
+0000007f94881000       4       4       4       0  rw-p  /app/lib/libconfig.so.1.0.0
+0000007f94882000      60      15       0       0  r-xp  /usr/lib/libgstapp-1.0.so.0.1603.0
+0000007f94891000      60       0       0       0  ---p  /usr/lib/libgstapp-1.0.so.0.1603.0
+0000007f948a0000       4       4       4       0  r--p  /usr/lib/libgstapp-1.0.so.0.1603.0
+0000007f948a1000       4       4       4       0  rw-p  /usr/lib/libgstapp-1.0.so.0.1603.0
+0000007f948a2000     600      38       0       0  r-xp  /lib/libm-2.31.so
+0000007f94938000      60       0       0       0  ---p  /lib/libm-2.31.so
+0000007f94947000       4       4       4       0  r--p  /lib/libm-2.31.so
+0000007f94948000       4       4       4       0  rw-p  /lib/libm-2.31.so
+0000007f94949000     304      46       0       0  r-xp  /usr/lib/libpulse.so.0.21.1
+0000007f94995000      64       0       0       0  ---p  /usr/lib/libpulse.so.0.21.1
+0000007f949a5000       8       8       8       0  r--p  /usr/lib/libpulse.so.0.21.1
+0000007f949a7000       4       4       4       0  rw-p  /usr/lib/libpulse.so.0.21.1
+0000007f949a8000      56      14       0       0  r-xp  /usr/lib/libgstcontroller-1.0.so.0.1603.0
+0000007f949b6000      64       0       0       0  ---p  /usr/lib/libgstcontroller-1.0.so.0.1603.0
+0000007f949c6000       4       4       4       0  r--p  /usr/lib/libgstcontroller-1.0.so.0.1603.0
+0000007f949c7000       4       4       4       0  rw-p  /usr/lib/libgstcontroller-1.0.so.0.1603.0
+0000007f949c8000     240      58       0       0  r-xp  /usr/lib/libgsttag-1.0.so.0.1603.0
+0000007f94a04000      60       0       0       0  ---p  /usr/lib/libgsttag-1.0.so.0.1603.0
+0000007f94a13000       8       8       8       0  r--p  /usr/lib/libgsttag-1.0.so.0.1603.0
+0000007f94a15000       4       4       4       0  rw-p  /usr/lib/libgsttag-1.0.so.0.1603.0
+0000007f94a16000     228      74       0       0  r-xp  /usr/lib/libgstpbutils-1.0.so.0.1603.0
+0000007f94a4f000      64       0       0       0  ---p  /usr/lib/libgstpbutils-1.0.so.0.1603.0
+0000007f94a5f000      12      12      12       0  r--p  /usr/lib/libgstpbutils-1.0.so.0.1603.0
+0000007f94a62000       4       4       4       0  rw-p  /usr/lib/libgstpbutils-1.0.so.0.1603.0
+0000007f94a63000      68      16       0       0  r-xp  /app/lib/libavinfo.so.1.0.0
+0000007f94a74000      60       0       0       0  ---p  /app/lib/libavinfo.so.1.0.0
+0000007f94a83000       4       4       4       0  r--p  /app/lib/libavinfo.so.1.0.0
+0000007f94a84000       4       4       4       0  rw-p  /app/lib/libavinfo.so.1.0.0
+0000007f94a85000     196     196       0       0  r-xp  /app/lib/libtcmalloc.so.4
+0000007f94ab6000      60       0       0       0  ---p  /app/lib/libtcmalloc.so.4
+0000007f94ac5000       8       8       8       0  r--p  /app/lib/libtcmalloc.so.4
+0000007f94ac7000       4       4       4       0  rw-p  /app/lib/libtcmalloc.so.4
+0000007f94ac8000    1724    1664    1664       0  rw-p    [ anon ]
+0000007f94c77000    2900     113       0       0  r-xp  /usr/lib/libprotobuf.so.22.0.4
+0000007f94f4c000      64       0       0       0  ---p  /usr/lib/libprotobuf.so.22.0.4
+0000007f94f5c000      52      52      52       0  r--p  /usr/lib/libprotobuf.so.22.0.4
+0000007f94f69000       4       4       4       0  rw-p  /usr/lib/libprotobuf.so.22.0.4
+0000007f94f6a000       4       4       4       0  rw-p    [ anon ]
+0000007f94f6b000     880      38       0       0  r-xp  /app/lib/libfdbus.so
+0000007f95047000      60       0       0       0  ---p  /app/lib/libfdbus.so
+0000007f95056000      32      32      32       0  r--p  /app/lib/libfdbus.so
+0000007f9505e000       4       4       4       0  rw-p  /app/lib/libfdbus.so
+0000007f9505f000       4       0       0       0  r-xp  /usr/lib/libboost_system.so.1.72.0
+0000007f95060000      60       0       0       0  ---p  /usr/lib/libboost_system.so.1.72.0
+0000007f9506f000       4       4       4       0  r--p  /usr/lib/libboost_system.so.1.72.0
+0000007f95070000       4       4       4       0  rw-p  /usr/lib/libboost_system.so.1.72.0
+0000007f95071000     104       5       0       0  r-xp  /usr/lib/libboost_filesystem.so.1.72.0
+0000007f9508b000      64       0       0       0  ---p  /usr/lib/libboost_filesystem.so.1.72.0
+0000007f9509b000       4       4       4       0  r--p  /usr/lib/libboost_filesystem.so.1.72.0
+0000007f9509c000       4       4       4       0  rw-p  /usr/lib/libboost_filesystem.so.1.72.0
+0000007f9509d000     176       9       0       0  r-xp  /app/lib/libpersist.so.0.0.1
+0000007f950c9000      64       0       0       0  ---p  /app/lib/libpersist.so.0.0.1
+0000007f950d9000       8       8       8       0  r--p  /app/lib/libpersist.so.0.0.1
+0000007f950db000       4       4       4       0  rw-p  /app/lib/libpersist.so.0.0.1
+0000007f950dc000      24       1       0       0  r-xp  /app/lib/libtimer.so.0.0.1
+0000007f950e2000      60       0       0       0  ---p  /app/lib/libtimer.so.0.0.1
+0000007f950f1000       4       4       4       0  r--p  /app/lib/libtimer.so.0.0.1
+0000007f950f2000       4       4       4       0  rw-p  /app/lib/libtimer.so.0.0.1
+0000007f950f3000       4       0       0       0  r-xp  /usr/lib/libgthread-2.0.so.0.6200.6
+0000007f950f4000      60       0       0       0  ---p  /usr/lib/libgthread-2.0.so.0.6200.6
+0000007f95103000       4       4       4       0  r--p  /usr/lib/libgthread-2.0.so.0.6200.6
+0000007f95104000       4       4       4       0  rw-p  /usr/lib/libgthread-2.0.so.0.6200.6
+0000007f95105000      12       0       0       0  r-xp  /usr/lib/libgmodule-2.0.so.0.6200.6
+0000007f95108000      60       0       0       0  ---p  /usr/lib/libgmodule-2.0.so.0.6200.6
+0000007f95117000       4       4       4       0  r--p  /usr/lib/libgmodule-2.0.so.0.6200.6
+0000007f95118000       4       4       4       0  rw-p  /usr/lib/libgmodule-2.0.so.0.6200.6
+0000007f95119000     348      28       0       0  r-xp  /usr/lib/libgobject-2.0.so.0.6200.6
+0000007f95170000      60       0       0       0  ---p  /usr/lib/libgobject-2.0.so.0.6200.6
+0000007f9517f000      12      12      12       0  r--p  /usr/lib/libgobject-2.0.so.0.6200.6
+0000007f95182000       4       4       4       0  rw-p  /usr/lib/libgobject-2.0.so.0.6200.6
+0000007f95183000       4       4       4       0  rw-p    [ anon ]
+0000007f95184000    1988      17       0       0  r-xp  /usr/lib/libgio-2.0.so.0.6200.6
+0000007f95375000      64       0       0       0  ---p  /usr/lib/libgio-2.0.so.0.6200.6
+0000007f95385000      32      32      32       0  r--p  /usr/lib/libgio-2.0.so.0.6200.6
+0000007f9538d000       4       4       4       0  rw-p  /usr/lib/libgio-2.0.so.0.6200.6
+0000007f9538e000       8       4       4       0  rw-p    [ anon ]
+0000007f95390000    1204      78       0       0  r-xp  /usr/lib/libglib-2.0.so.0.6200.6
+0000007f954bd000      60       0       0       0  ---p  /usr/lib/libglib-2.0.so.0.6200.6
+0000007f954cc000       4       4       4       0  r--p  /usr/lib/libglib-2.0.so.0.6200.6
+0000007f954cd000       4       4       4       0  rw-p  /usr/lib/libglib-2.0.so.0.6200.6
+0000007f954ce000       4       4       4       0  rw-p    [ anon ]
+0000007f954cf000     296      15       0       0  r-xp  /app/lib/libappmgrProxy.so.0.0.1
+0000007f95519000      64       0       0       0  ---p  /app/lib/libappmgrProxy.so.0.0.1
+0000007f95529000      16      16      16       0  r--p  /app/lib/libappmgrProxy.so.0.0.1
+0000007f9552d000       4       4       4       0  rw-p  /app/lib/libappmgrProxy.so.0.0.1
+0000007f9552e000      12       0       0       0  r-xp  /lib/libdl-2.31.so
+0000007f95531000      60       0       0       0  ---p  /lib/libdl-2.31.so
+0000007f95540000       4       4       4       0  r--p  /lib/libdl-2.31.so
+0000007f95541000       4       4       4       0  rw-p  /lib/libdl-2.31.so
+0000007f95542000      28       0       0       0  r-xp  /lib/librt-2.31.so
+0000007f95549000      60       0       0       0  ---p  /lib/librt-2.31.so
+0000007f95558000       4       4       4       0  r--p  /lib/librt-2.31.so
+0000007f95559000       4       4       4       0  rw-p  /lib/librt-2.31.so
+0000007f9555a000     112       2       0       0  r-xp  /lib/libpthread-2.31.so
+0000007f95576000      60       0       0       0  ---p  /lib/libpthread-2.31.so
+0000007f95585000       4       4       4       0  r--p  /lib/libpthread-2.31.so
+0000007f95586000       4       4       4       0  rw-p  /lib/libpthread-2.31.so
+0000007f95587000      16       4       4       0  rw-p    [ anon ]
+0000007f9558b000     296      22       0       0  r-xp  /app/lib/libsource.so.1.0.0
+0000007f955d5000      64       0       0       0  ---p  /app/lib/libsource.so.1.0.0
+0000007f955e5000      16      16      16       0  r--p  /app/lib/libsource.so.1.0.0
+0000007f955e9000       4       4       4       0  rw-p  /app/lib/libsource.so.1.0.0
+0000007f955ea000     240       3       0       0  r-xp  /app/lib/libCommomUtils.so.1.0.0
+0000007f95626000      60       0       0       0  ---p  /app/lib/libCommomUtils.so.1.0.0
+0000007f95635000       4       4       4       0  r--p  /app/lib/libCommomUtils.so.1.0.0
+0000007f95636000       4       4       4       0  rw-p  /app/lib/libCommomUtils.so.1.0.0
+0000007f95637000     116      40       0       0  r-xp  /app/lib/libmpe-gst.so.1.0.0
+0000007f95654000      64       0       0       0  ---p  /app/lib/libmpe-gst.so.1.0.0
+0000007f95664000       4       4       4       0  r--p  /app/lib/libmpe-gst.so.1.0.0
+0000007f95665000       4       4       4       0  rw-p  /app/lib/libmpe-gst.so.1.0.0
+0000007f95666000       4       4       4       0  rw-p    [ anon ]
+0000007f95667000      76       4       0       0  r-xp  /app/lib/libbasic.so.1.0.0
+0000007f9567a000      64       0       0       0  ---p  /app/lib/libbasic.so.1.0.0
+0000007f9568a000       4       4       4       0  r--p  /app/lib/libbasic.so.1.0.0
+0000007f9568b000       4       4       4       0  rw-p  /app/lib/libbasic.so.1.0.0
+0000007f9568c000      20       1       0       0  r-xp  /app/lib/libservice.so.1.0.0
+0000007f95691000      60       0       0       0  ---p  /app/lib/libservice.so.1.0.0
+0000007f956a0000       4       4       4       0  r--p  /app/lib/libservice.so.1.0.0
+0000007f956a1000       4       4       4       0  rw-p  /app/lib/libservice.so.1.0.0
+0000007f956a2000      12       0       0       0  r-xp  /app/lib/libservicefw.so.1.0.0
+0000007f956a5000      60       0       0       0  ---p  /app/lib/libservicefw.so.1.0.0
+0000007f956b4000       4       4       4       0  r--p  /app/lib/libservicefw.so.1.0.0
+0000007f956b5000       4       4       4       0  rw-p  /app/lib/libservicefw.so.1.0.0
+0000007f956b6000     528      45       0       0  r-xp  /app/lib/libaudio.so.1.0.0
+0000007f9573a000      64       0       0       0  ---p  /app/lib/libaudio.so.1.0.0
+0000007f9574a000      28      28      28       0  r--p  /app/lib/libaudio.so.1.0.0
+0000007f95751000       4       4       4       0  rw-p  /app/lib/libaudio.so.1.0.0
+0000007f95752000     132       2       0       0  r-xp  /lib/ld-2.31.so
+0000007f95773000      56      56      56       0  rw-p    [ anon ]
+0000007f95781000       4       0       0       0  r--p  [vvar]
+0000007f95782000       4       0       0       0  r-xp  [vdso]
+0000007f95783000       4       4       4       0  r--p  /lib/ld-2.31.so
+0000007f95784000       8       8       8       0  rw-p  /lib/ld-2.31.so
+0000007fdcc23000     132      24      24       0  rw-p  [stack]
+----------------  ------  ------  ------  ------
+total		  383540   57800   51604       0
