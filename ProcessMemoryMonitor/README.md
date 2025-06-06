@@ -17,7 +17,7 @@ ProcessMemoryMonitor 是一个用于Linux系统内存分析的可视化工具，
 ### 1. 数据收集
 ```bash
 chmod +x ProcessMemoryMonitor.sh
-./ProcessMemoryMonitor.sh [输出目录]
+./ProcessMemoryMonitor.sh -d [输出目录] -t [次数]
 ```
 
 
@@ -27,7 +27,7 @@ chmod +x ProcessMemoryMonitor.sh
 ./ProcessMemoryMonitor.sh
 
 # 指定输出目录
-./ProcessMemoryMonitor.sh /home/user/memory_logs
+./ProcessMemoryMonitor.sh -d /home/user/memory_logs
 ```
 
 
