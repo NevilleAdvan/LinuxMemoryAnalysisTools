@@ -20,8 +20,20 @@ plt.rcParams['axes.unicode_minus'] = False   # 解决负号显示问题
 class MemoryAnalyzer:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("内存分析工具 v4.0")
-        self.root.geometry("1400x900")
+        self.root.title("内存分析工具 v4.1")
+        # 获取屏幕尺寸
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        init_width = min(int(screen_width * 0.9), 1400)  # 最大不超过1400
+        init_height = min(int(screen_height * 0.8), 900)  # 最大不超过900
+        # 计算窗口左上角位置，使其居中显示
+        x_position = (screen_width - init_width) // 2
+        y_position = (screen_height - init_height) // 2
+
+        # 设置窗口大小和位置
+        self.root.geometry(f"{init_width}x{init_height}+{x_position}+{y_position}")
+        # 设置最小窗口尺寸
+        self.root.minsize(800, 600)
 
         # 初始化数据结构
         self.df = pd.DataFrame()
@@ -65,7 +77,7 @@ class MemoryAnalyzer:
         ttk.Button(toolbar, text="全非选", command=self.select_none).pack(side=tk.LEFT, padx=5)
 
         # 左侧进程列表
-        self.tree_frame = ttk.Frame(main_panel, width=250)
+        self.tree_frame = ttk.Frame(main_panel, width=240)
         self.tree = ttk.Treeview(self.tree_frame, columns=('Visible', 'Process'), show='headings', height=30)
         self.tree.heading('Visible', text='显示')
         self.tree.heading('Process', text='进程名称')
@@ -89,7 +101,7 @@ class MemoryAnalyzer:
         self.notebook.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         # 右侧图例区域（修复后的代码）
-        legend_panel = ttk.Frame(main_panel, width=220)
+        legend_panel = ttk.Frame(main_panel, width=230)
         self.legend_frame = ttk.Frame(legend_panel)
 
         # 创建Canvas和滚动条
@@ -301,9 +313,9 @@ class MemoryAnalyzer:
                     color = colors[idx]
 
                     # 绘制曲线
-                    self.ax_pss.plot(times, sub_df['PSS'], color=color, marker='o', linewidth=2)
-                    self.ax_rss.plot(times, sub_df['RSS'], color=color, marker='s', linewidth=2)
-                    self.ax_vss.plot(times, sub_df['VSS'], color=color, marker='^', linewidth=2)
+                    self.ax_pss.plot(times, sub_df['PSS'], color=color, marker='o', linewidth=1,markersize=1)
+                    self.ax_rss.plot(times, sub_df['RSS'], color=color, marker='s', linewidth=1,markersize=1)
+                    self.ax_vss.plot(times, sub_df['VSS'], color=color, marker='^', linewidth=1,markersize=1)
 
                     # 生成图例项
                     item_frame = ttk.Frame(self.scrollable_frame)
