@@ -20,7 +20,7 @@ plt.rcParams['axes.unicode_minus'] = False   # 解决负号显示问题
 class MemoryAnalyzer:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("内存分析工具 v4.1")
+        self.root.title("内存分析工具 v4.2")
         # 获取屏幕尺寸
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
@@ -42,6 +42,7 @@ class MemoryAnalyzer:
         self.legend_frame = None
         self.legend_canvas = None
         self.auto_update = tk.BooleanVar(value=True)  # 新增自动更新开关
+        self.sort_by_time = tk.BooleanVar(value=False)  # 新增：是否按时间排序，默认False
         self.update_job = None  # 延迟任务ID
         # 创建界面组件
         self.create_widgets()
@@ -65,7 +66,13 @@ class MemoryAnalyzer:
             command=lambda: messagebox.showinfo("提示", f"自动更新已{'启用' if self.auto_update.get() else '关闭'}")
         ).pack(side=tk.LEFT)
 
-        toolbar.pack(side=tk.TOP, fill=tk.X)
+        # 新增排序方式选择复选框
+        ttk.Checkbutton(
+            toolbar,
+            text="按时间排序",
+            variable=self.sort_by_time,
+            command=lambda: self.safe_sort_update() if self.auto_update.get() else None
+        ).pack(side=tk.LEFT, padx=10)
 
         # 主内容区域
         main_panel = ttk.Frame(self.root)
@@ -76,6 +83,7 @@ class MemoryAnalyzer:
         # 新增全非选按钮
         ttk.Button(toolbar, text="全非选", command=self.select_none).pack(side=tk.LEFT, padx=5)
 
+        toolbar.pack(side=tk.TOP, fill=tk.X)
         # 左侧进程列表
         self.tree_frame = ttk.Frame(main_panel, width=240)
         self.tree = ttk.Treeview(self.tree_frame, columns=('Visible', 'Process'), show='headings', height=30)
@@ -176,12 +184,14 @@ class MemoryAnalyzer:
 
         current_time = None
         in_table = False
+        sequence_number = 0  # 新增：记录原始顺序
 
         for line in data.split('\n'):
             # 匹配时间戳
             if time_match := time_pattern.match(line):
                 current_time = datetime.strptime(time_match.group(1), "%Y-%m-%d %H:%M:%S")
                 in_table = False
+                sequence_number += 1  # 每次遇到新时间戳，增加序号
                 continue
 
             # 匹配表格开始
@@ -200,6 +210,7 @@ class MemoryAnalyzer:
                     process = process_match.group(1).strip()
                     records.append({
                         'timestamp': current_time,
+                        'sequence': sequence_number,  # 新增：保存原始顺序序号
                         'process': process,
                         'PSS': float(process_match.group(2)),
                         'RSS': float(process_match.group(3)),
@@ -210,24 +221,43 @@ class MemoryAnalyzer:
         return pd.DataFrame(records)
 
     def prepare_data(self):
-        """预处理数据"""
-        # 合并重复项
-        self.df = self.df.groupby(['timestamp', 'process']).last().reset_index()
+        """预处理数据，支持按文件顺序或时间排序"""
+        if self.sort_by_time.get():
+            # 合并重复项
+            self.df = self.df.groupby(['timestamp', 'process']).last().reset_index()
 
-        # 创建完整的时间-进程矩阵
-        time_list = self.df['timestamp'].unique()
-        all_processes = self.df['process'].unique().tolist()
+            # 创建完整的时间-进程矩阵
+            time_list = self.df['timestamp'].unique()
+            all_processes = self.df['process'].unique().tolist()
 
-        index = pd.MultiIndex.from_product(
-            [time_list, all_processes],
-            names=['timestamp', 'process']
-        )
+            index = pd.MultiIndex.from_product(
+                [time_list, all_processes],
+                names=['timestamp', 'process']
+            )
 
-        self.full_df = (
-            self.df.set_index(['timestamp', 'process'])
-            .reindex(index, fill_value=0)
-            .reset_index()
-        )
+            self.full_df = (
+                self.df.set_index(['timestamp', 'process'])
+                .reindex(index, fill_value=0)
+                .reset_index()
+            )
+        else:
+            # 合并重复项
+            self.df = self.df.groupby(['sequence', 'process']).last().reset_index()
+
+            # 创建完整的时间-进程矩阵
+            time_list = self.df['sequence'].unique()
+            all_processes = self.df['process'].unique().tolist()
+
+            index = pd.MultiIndex.from_product(
+                [time_list, all_processes],
+                names=['sequence', 'process']
+            )
+
+            self.full_df = (
+                self.df.set_index(['sequence', 'process'])
+                .reindex(index, fill_value=0)
+                .reset_index()
+            )
 
     def load_file(self):
         """加载数据文件"""
@@ -283,8 +313,18 @@ class MemoryAnalyzer:
             self.root.after_cancel(self.update_job)
             self.update_job = None
         self.update_plot()
+
+    def safe_sort_update(self):
+        """安全更新方法（防止重复调用）"""
+        if self.update_job:
+            self.root.after_cancel(self.update_job)
+            self.update_job = None
+        self.prepare_data()
+        # self.update_process_list()
+        self.update_plot()
+
     def update_plot(self):
-        """更新图表和滚动图例"""
+        """更新图表和滚动图例，使用正确的排序顺序"""
         # 在开始前禁用界面交互
         self.root.config(cursor="watch")
         self.root.update()
@@ -309,7 +349,10 @@ class MemoryAnalyzer:
             for idx, process in enumerate(selected):
                 sub_df = self.full_df[self.full_df['process'] == process]
                 if not sub_df.empty:
-                    times = sub_df['timestamp']
+                    if self.sort_by_time.get():
+                        times = sub_df['timestamp']
+                    else:
+                        times = sub_df['sequence']
                     color = colors[idx]
 
                     # 绘制曲线
